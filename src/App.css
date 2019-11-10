@@ -2,6 +2,38 @@
   text-align: center;
 }
 
+.Button-Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color:white;
+}
+
+.Description-Container {
+  display: flex;
+  position:absolute;
+  width: 100vw;
+  flex-direction: column;
+  background-color:green
+}
+.Header {
+  display: flex;
+  position:absolute;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background-color:green
+}
+.header-title {
+  font-size: 5vw;
+  color: #282c34;
+
+}
+.header-title-date {
+  font-size: 6vw;
+  font-weight: 400;
+  color: #282c34;
+}
 .App-logo {
   height: 40vmin;
 }

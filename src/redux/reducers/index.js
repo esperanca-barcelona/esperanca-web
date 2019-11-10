@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 
-import user from './user';
+import googleSheet from './googleSheet';
+import navigation from './navigation';
+import form from './form';
 
 const rootReducer = combineReducers({
-	user
+	googleSheet,
+	navigation,
+	form
 });
 
 export default rootReducer;
