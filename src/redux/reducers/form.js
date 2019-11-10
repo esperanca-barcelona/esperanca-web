@@ -1,7 +1,13 @@
 const initialState = {
 	date: {},
-	place: ""
-}
+	place: '',
+	delivery: '',
+	cooking: '',
+	donate: '',
+	name: '',
+	email: '',
+	phone: ''
+};
 
 export default function form(state = initialState, action) {
 	switch (action.type) {
@@ -12,10 +18,16 @@ export default function form(state = initialState, action) {
 				place: action.place
 			};
 		case 'REMOVE_LIST':
+			return initialState;
+		case 'SET_OTHERS':
 			return {
 				...state,
-				firstSelectedItem: action.first,
-				secondSelectedItem: action.second
+				delivery: action.selectedDeliveryItem,
+				cooking: action.selectedCookingItem,
+				donate: action.selectedDonateItem,
+				name: action.name,
+				email: action.email,
+				phone: action.phone
 			};
 		default:
 			return state;

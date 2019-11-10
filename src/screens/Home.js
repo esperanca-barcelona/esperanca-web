@@ -40,7 +40,6 @@ class Home extends Component {
 	}
 
 	goToLists = () => {
-		console.log(this.state);
 		if (Object.keys(this.state.selectDate).length > 0 && this.state.selectedPlace !== '') {
 			this.props.goToLists(this.props);
 			this.props.addDatePlacetoList(this.state.selectDate, this.state.selectedPlace);

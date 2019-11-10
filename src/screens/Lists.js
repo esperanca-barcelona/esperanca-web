@@ -2,28 +2,109 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 import { getGoogleSheet } from '../redux/actions/googleSheet';
-import { goToHome } from '../redux/actions/navigation';
+import { goToHome, goToEnd } from '../redux/actions/navigation';
+import { addOtherstoList } from '../redux/actions/form';
 import Gradient from '../images/Gradient.png';
 import Logo from '../images/logo.png';
-import Clock from '../images/Emojis/18.png';
+
+import i3 from '../images/Emojis/3.png';
+import i4 from '../images/Emojis/4.png';
+import i5 from '../images/Emojis/5.png';
+import i7 from '../images/Emojis/7.png';
+import i8 from '../images/Emojis/8.png';
+import i9 from '../images/Emojis/9.png';
+import i10 from '../images/Emojis/10.png';
+import i11 from '../images/Emojis/11.png';
+
+import i15 from '../images/Emojis/15.png';
+import i12 from '../images/Emojis/12.png';
 
 const delivery = [
 	{
-		title: 'first title ',
+		title: 'Walker',
+		img: i15,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Host',
+		img: i12,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Route Leader',
+		img: i11,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Emergency Volunteer',
+		img: i10,
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
 	}
 ];
 const cooking = [
 	{
-		title: 'first title ',
+		title: 'Vegetable Soup',
+		img: i9,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Hard-boiled Eggs',
+		img: i8,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Tuna Sandwiches',
+		img: i7,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Cheese Sandwiches',
+		img: i5,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Cookies or Magdalenas',
+		img: i4,
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Small Juices',
+		img: i3,
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
 	}
 ];
 const donation = [
 	{
-		title: 'first title ',
+		title: 'Sleeping Bags/Blankets',
+		img: '🧦',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Cloths and Shoes',
+		img: '🛁',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Toiletries',
+		img: '👖',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
+	},
+	{
+		title: 'Other Donations',
+		img: '📦',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut ligula non sem iaculis pretium egestas sed nunc. In vitae nisi sollicitudin magna porttitor ultrices. Integer diam dui, pulvinar ut interdum in, porttitor ut erat. Integer imperdiet suscipit mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt mi quis nibh pharetra fringilla. Suspendisse efficitur eu enim vel porta. Nulla facilisi. Quisque et efficitur leo. Nam vehicula efficitur suscipit.'
 	}
@@ -33,35 +114,50 @@ class Lists extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedDeliveryIndex: '',
-			selectCookingTask: '',
-			selectDonation: ''
+			selectedDeliveryIndex: null,
+			selectedCookingIndex: null,
+			selectedDonationIndex: null,
+			name: '',
+			email: '',
+			phone: ''
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillMount() {}
-
-	handleChange(value, name) {
-		this.setState({ [name]: value.target.value });
-	}
-
-	handleSubmit(event) {
-		let err = false;
-		if (!this.state.email || !this.state.name || !this.state.phone) err = true;
-		if (!err) {
-			alert('A name was submitted: ');
-		} else {
-			alert('Something missing');
+	componentWillMount() {
+		if (Object.keys(this.props.form.date).length === 0 && this.props.form.place === '') {
+			this.props.goToHome(this.props);
 		}
-		event.preventDefault();
 	}
 
 	goToHome = () => this.props.goToHome(this.props);
 
+	goToEnd = async () => {
+		const { selectedDeliveryIndex, selectedCookingIndex, selectedDonationIndex, name, email, phone } = this.state;
+		const selectedDeliveryItem = selectedDeliveryIndex ? delivery[selectedDeliveryIndex].title : null;
+		const selectedCookingItem = selectedCookingIndex ? cooking[selectedCookingIndex].title : null;
+		const selectedDonateItem = selectedDonationIndex ? donation[selectedDonationIndex].title : null;
+		if (
+			(selectedDeliveryItem || selectedCookingItem || selectedDonateItem) &&
+			name !== '' &&
+			email !== '' &&
+			phone !== ''
+		) {
+			await this.props.addOtherstoList(selectedDeliveryItem,selectedCookingItem, selectedDonateItem, name, email, phone );
+			console.log(this.props.form)
+			this.props.goToEnd(this.props);
+		} else {
+			this.setState({
+				err: 'Something is missing!'
+			});
+			setTimeout(() => {
+				this.setState({
+					err: ''
+				});
+			}, 4000);
+		}
+	};
+
 	render() {
-		const { firstSelectedItem, secondSelectedItem } = this.props.state.state || {};
 		return (
 			<div className="App">
 				<header
@@ -127,7 +223,7 @@ class Lists extends Component {
 								flexDirection: 'column'
 							}}>
 							<div>
-								<img src={Clock} style={{ height: 60 }} />
+								<img src={e.img} style={{ height: 60 }} />
 								<text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{e.title}</text>
 								{this.state.selectedDeliveryIndex === i && (
 									<div
@@ -181,7 +277,7 @@ class Lists extends Component {
 								flexDirection: 'column'
 							}}>
 							<div>
-								<img src={Clock} style={{ height: 60 }} />
+								<img src={e.img} style={{ height: 60 }} />
 								<text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{e.title}</text>
 								{this.state.selectedCookingIndex === i && (
 									<div
@@ -234,7 +330,17 @@ class Lists extends Component {
 								flexDirection: 'column'
 							}}>
 							<div>
-								<img src={Clock} style={{ height: 60 }} />
+								<text
+									style={{
+										fontSize: 30,
+										marginTop: 10,
+										marginBottom: 10,
+										padding: 15,
+										color: 'white',
+										fontWeight: 'bold'
+									}}>
+									{e.img}
+								</text>
 								<text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>{e.title}</text>
 								{this.state.selectedDonationIndex === i && (
 									<div
@@ -254,58 +360,34 @@ class Lists extends Component {
 							</div>
 						</button>
 					))}
-
-					<button onClick={this.goToHome}>
-						<text> GO BACK</text>
-					</button>
-					{firstSelectedItem && (
-						<div>
-							<text>
-								{firstSelectedItem.email}
-								{firstSelectedItem.phone}
-								{firstSelectedItem.bi}
-							</text>
-						</div>
-					)}
-					{secondSelectedItem && (
-						<div>
-							<text>
-								{secondSelectedItem.email}
-								{secondSelectedItem.phone}
-								{secondSelectedItem.bi}
-							</text>
-						</div>
-					)}
 				</div>
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Name:
-						<input
-							type="text"
-							value={this.state.name}
-							onChange={(value) => this.handleChange(value, 'name')}
-						/>
-					</label>
-					<label>
-						E-mail:
-						<input
-							type="text"
-							value={this.state.email}
-							onChange={(value) => this.handleChange(value, 'email')}
-						/>
-					</label>
-					<label>
-						Phone:
-						<input
-							type="text"
-							value={this.state.phone}
-							onChange={(value) => this.handleChange(value, 'phone')}
-						/>
-					</label>
-					<input type="submit" value="Submit" />
-				</form>
+				<p
+					className="header-title"
+					style={{
+						color: '#F5A146',
+						size: 40,
+						fontWeight: 'bold',
+						paddingTop: 20,
+						paddingBottom: 20,
+						width: '80%',
+						margin: 'auto'
+					}}>
+					Please, fill your personal details
+				</p>
+				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Full Name </text>
+					<input type="text" style={{borderWidth:2, borderColor:"lightgray"}} value={this.state.name} onChange={(value) => this.setState({ name: value.target.value })} />
+				</label>
+				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Email </text>
+					<input type="text" style={{borderWidth:2, borderColor:"lightgray"}} value={this.state.email} onChange={(value) => this.setState({ email: value.target.value })} />
+				</label>
+				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Phone </text>
+					<input type="text" style={{borderWidth:2, borderColor:"lightgray", marginBottom:40}} value={this.state.phone} onChange={(value) => this.setState({ phone: value.target.value })} />
+				</label>
 				<button
-					onClick={this.goToLists}
+					onClick={this.goToEnd}
 					style={{
 						borderRadius: 4,
 						display: 'flex',
@@ -339,12 +421,14 @@ class Lists extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	state: state
+	form: state.form
 });
 
 const mapDispatchToProps = {
 	getGoogleSheet,
-	goToHome
+	goToHome,
+	goToEnd,
+	addOtherstoList
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lists);
