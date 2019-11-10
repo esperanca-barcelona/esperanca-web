@@ -365,7 +365,6 @@ class Lists extends Component {
 					className="header-title"
 					style={{
 						color: '#F5A146',
-						size: 40,
 						fontWeight: 'bold',
 						paddingTop: 20,
 						paddingBottom: 20,
@@ -375,15 +374,15 @@ class Lists extends Component {
 					Please, fill your personal details
 				</p>
 				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
-				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Full Name </text>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold', fontSize: 20}}>	Full Name </text>
 					<input type="text" style={{borderWidth:2, borderColor:"lightgray"}} value={this.state.name} onChange={(value) => this.setState({ name: value.target.value })} />
 				</label>
 				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
-				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Email </text>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold', fontSize: 20}}>	Email </text>
 					<input type="text" style={{borderWidth:2, borderColor:"lightgray"}} value={this.state.email} onChange={(value) => this.setState({ email: value.target.value })} />
 				</label>
 				<label style={{width:'70%', margin:'auto', display:'flex', flexDirection:'column',}}>
-				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold'}}>	Phone </text>
+				<text className="header-title" style={{color: '#F5A146',textAlign:'left', fontWeight:'bold', fontSize: 20}}>	Phone </text>
 					<input type="text" style={{borderWidth:2, borderColor:"lightgray", marginBottom:40}} value={this.state.phone} onChange={(value) => this.setState({ phone: value.target.value })} />
 				</label>
 				<button
